@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="49" tileheight="49" nextobjectid="1">
+ <tileset firstgid="1" name="Chapter1Map.png" tilewidth="49" tileheight="49" tilecount="80" columns="10">
+  <image source="Chapter1Map.png.png" width="490" height="432"/>
+ </tileset>
+ <layer name="Layer" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3DAQkAAAwEoavw/csux0DBVVNVVVVVVVVVVdXnD0lEpK8QJwAA
+  </data>
+ </layer>
+ <layer name="Collidable" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2X0Q7DIAhF3fN83f//6p6WGCYUqpORnJOYtElRbhHB1gAAAAAAAAAAAAAAavEUoyoPMSrpGv2UOjRdmn0mlt9R+wy6eI/qeLXvGGbQxfOOeMh/82tk/mq5odmMaOfCCa7yedTRJ3baXKeIxt2T/1k6Tu/hnVSqZ/DfWPuo0h6LniMebRl5tlKXo/7O6uouzTMdszP3s8ZKv+itqeOaXq07+oW7OqLfW3YrvbicJ+qXhXXP8cyt7f2rGN/V4ekrV3R4x9gHR3XIf+69c854AwJ7QhoQJwAA
+  </data>
+ </layer>
+ <layer name="trap" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3VQQoAIAgEwD5Q9/7/0Z5gSSDFDOzdRcTWAAAAAAAAONWrBwAA0vzx/9gpM8grRpBd1Tdxq0fGAia5r6kQJwAA
+  </data>
+ </layer>
+ <layer name="word" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3WMREAAAgDMbTgXyQC2GDqXSKgU4evAgAAAAAAIF2HbpPPPwAA/q5NpcW2AVC+9LoQJwAA
+  </data>
+ </layer>
+ <layer name="biqi" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3OAQkAAAwDoOV5/4CPMRiawAQAAAAAAAAAADZcOwBUPTm1qmIQJwAA
+  </data>
+ </layer>
+</map>
