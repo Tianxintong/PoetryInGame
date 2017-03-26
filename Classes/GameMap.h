@@ -18,6 +18,7 @@ public:
     CC_PROPERTY_READONLY(CCTMXLayer*, BiqiLayer, BiqiLayer);
     CC_PROPERTY_READONLY(CCTMXLayer*, TrapLayer, TrapLayer)
     CC_PROPERTY_READONLY(CCTMXLayer*, WordLayer, WordLayer)
+    CC_PROPERTY_READONLY(CCTMXLayer*, notBiqiLayer, notBiqiLayer)
 
 	// 声明一个成员变量以及get##funName函数，没有set函数。get##funName函数只有声明，而没有定义。代码如下:
 	//静态方法，用于生成GameMap实例

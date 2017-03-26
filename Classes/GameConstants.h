@@ -56,6 +56,7 @@ typedef enum
 	cryFramekey,
 	onkey,
 	offkey,
+	bosskey,
 }CCSpriteFrameKey;//CCSpriteFrameƒ£∞Êº¸÷µ
 enum 
 {

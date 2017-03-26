@@ -8,6 +8,7 @@ class Hero;
 class GameMap;
 class ControlLayer;
 class FailedLayer;
+class GlobalData;
 class Global : public Singleton<Global>
 {
 public:
@@ -18,6 +19,7 @@ public:
 	Hero *hero;
 	ControlLayer *controlLayer;
 	FailedLayer *faledLayer;
+    GlobalData *globalData;
 	bool isMusicOn;
 	bool isEffectOn;
 	int gameStage;

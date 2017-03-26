@@ -21,6 +21,8 @@ USING_NS_CC;
 #include "VictoryLayer.h"
 #include "SettingScene.h"
 #include "AboutScene.h"
+#include "GlobalData.h"
+#include "PkScene.h"
 //#include "HideScene.h"
 #include <iostream>
 using namespace std;

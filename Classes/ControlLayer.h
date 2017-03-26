@@ -14,5 +14,6 @@ public:
 		void  update(float delta);
 		int failedLayerInitTimes;
 	   int 	winLayerInitTimes;
+    void backItemCallback(CCObject* pSender);
 };
 

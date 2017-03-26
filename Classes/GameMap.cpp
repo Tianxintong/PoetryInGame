@@ -61,8 +61,10 @@ void GameMap::extraInit()
 	CollidableLayer = this->layerNamed("Collidable");
 	LayerLayer = this->layerNamed("Layer");
     BiqiLayer = this->layerNamed("biqi");
+    BiqiLayer->setVisible(false);
     TrapLayer = this->layerNamed("trap");
     WordLayer = this->layerNamed("word");
+    notBiqiLayer = this->layerNamed("notBiqi");
     //ObjectsLayer->setVisible(false);
 	//hideBlockLayer->setVisible(false);
 	//platformDynamicLayer->setVisible(false);
@@ -129,6 +131,10 @@ CCTMXLayer* GameMap::getTrapLayer()
 CCTMXLayer* GameMap::getWordLayer()
 {
     return WordLayer;
+}
+CCTMXLayer* GameMap::getnotBiqiLayer()
+{
+    return notBiqiLayer;
 }
 /*
 CCTMXLayer* GameMap::getBiqiLayer()

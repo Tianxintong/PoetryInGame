@@ -40,27 +40,29 @@ bool SettingScene::init()
 		isMusicSwitchOn=sGlobal->isMusicOn;
 		isEffectSwitchOn=sGlobal->isEffectOn;
 		
-		CCSprite* bgSprite=CCSprite::create("Startup_bkg_gray.jpg");
+		CCSprite* bgSprite=CCSprite::create("background-3.png");
 		bgSprite->setAnchorPoint(ccp(0,0));
 		bgSprite->setPosition(ccp(0,0));
+		bgSprite->setScaleX(0.8);
+		bgSprite->setScaleY(0.8);
 
 		addChild(bgSprite);
 
-		CCSprite* bgSprite2=CCSprite::create("Startup_frame.png");
-		//bgSprite->setAnchorPoint(ccp(0,0));
+//		CCSprite* bgSprite2=CCSprite::create("Startup_frame.png");
+//		//bgSprite->setAnchorPoint(ccp(0,0));
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		bgSprite2->setPosition(ccp(size.width / 2, size.height/2));
+//		bgSprite2->setPosition(ccp(size.width / 2, size.height/2));
 		//  float a=(float)480/800;
 		// float b=(float)320/480;
 		//  bgSprite2->setScaleX((float)480/800);
 		//  bgSprite2->setScaleY((float)320/480);
 		//bgSprite2->setScaleX(0.9f);
 		//  bgSprite2->setScaleY(0.9f);
-		addChild(bgSprite2);
-		CCSprite* photo_border=CCSprite::create("Startup_photo_border.png");
-		photo_border->setPosition(ccp(190,190));
+//		addChild(bgSprite2);
+//		CCSprite* photo_border=CCSprite::create("Startup_photo_border.png");
+//		photo_border->setPosition(ccp(190,190));
 
-		addChild(photo_border);
+//		addChild(photo_border);
 		CCSprite* herface=CCSprite::create("Option_gear.png");
 		herface->setPosition(ccp(190,190));
 
@@ -135,14 +137,14 @@ void  SettingScene::ccTouchesEnded (cocos2d::CCSet *pTouches, cocos2d::CCEvent *
 	{
 		if (isMusicSwitchOn)
 		{
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+			//CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 			musicSwitch->setDisplayFrame(sAnimationMgr->getSpritFrame(offkey));
 			isMusicSwitchOn=false;
 			sGlobal->isMusicOn=false;
 			
 		}else
 		{
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Audio_bgm_home.mp3",true);
+			//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Audio_bgm_home.mp3",true);
 			musicSwitch->setDisplayFrame(sAnimationMgr->getSpritFrame(onkey));
 			isMusicSwitchOn=true;
 			sGlobal->isMusicOn=true;

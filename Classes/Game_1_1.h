@@ -18,7 +18,7 @@ public:
 	virtual bool init();  
 	CREATE_FUNC(Game_1_1);
 	void update(float dt);
-	void backItemCallback(CCObject* pSender);
+	
 	CCAnimation* createAnimationByState(State direction);
 	void  ccTouchesBegan (cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 	void  ccTouchesEnded (cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent); 

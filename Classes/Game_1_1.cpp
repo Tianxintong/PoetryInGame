@@ -5,7 +5,7 @@
 	CCSprite* daodan;
 	int shicount;
 	int daodancount;
-	CCMenuItemImage *backItem;
+
 Game_1_1::Game_1_1(void)
 {
 	sGlobal->game_1_1=this;
@@ -45,6 +45,7 @@ bool Game_1_1::init()
 		daodancount=0;
 		shicount=0;
 		haveTouchBiqi=true;
+        sGlobal->globalData->setWordId(-1);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		this->setTouchEnabled(true);
 	  //CCTMXTiledMap	*_tileMap=CCTMXTiledMap::create("TMX_1_5.tmx");
@@ -52,19 +53,7 @@ bool Game_1_1::init()
 		GameMap *gameMap=GameMap::gameMapWithTMXFile("our_game/map2/Chapter1Map35.tmx");
 		addChild(gameMap);
 		//∑µªÿ∞¥≈•
-		backItem = CCMenuItemImage::create(
-			"Thumb_back.png",
-			"Thumb_back_pressed.png",
-			this,
-			menu_selector(Game_1_1::backItemCallback));
-		CC_BREAK_IF(! backItem );
-
-		// Place the menu item bottom-right conner.
-		backItem ->setPosition(ccp(36,size.height-36));
-		//this->addChild(skipItem);
-		CCMenu* backItemMenu = CCMenu::create(backItem , NULL);
-		backItemMenu->setPosition(CCPointZero);
-		addChild(backItemMenu,2);
+		
       //≥ı ºªØæ´¡È
 		//hero=CCSprite::create("Hero_image.png",CCRectMake(0,50,50,50));
 		//hero->setAnchorPoint(ccp(0,0));
@@ -77,6 +66,10 @@ bool Game_1_1::init()
 		addChild(controlLayer);
 		controlLayer->setPosition(ccp(0,0));
 		bRet = true;
+        
+        sGlobal->globalData->setAllWord(20);
+        sGlobal->globalData->setOwnWord(0);
+        
 		if (sGlobal->isMusicOn)
 		{
 			  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Audio_bgm_1.mp3",true);
@@ -87,10 +80,7 @@ bool Game_1_1::init()
 	}while(0);
 	return bRet;
 }
-void Game_1_1::backItemCallback(CCObject* pSender)
-{
-	CCDirector::sharedDirector()->popScene();
-}
+
 CCAnimation* Game_1_1::createAnimationByState(State direction)
 {
 	CCTexture2D *heroTexture=CCTextureCache::sharedTextureCache()->addImage("hero.png");
@@ -120,7 +110,12 @@ void  Game_1_1::ccTouchesEnded (cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEve
 void Game_1_1::update(float dt)
 {
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	backItem ->setPosition(ccp(36-this->getPositionX(),size.height-36));
+    if (sGlobal->globalData->getLeaveWord() == 0)
+    {
+        sGlobal->gameMap->getnotBiqiLayer()->setVisible(false);
+        sGlobal->gameMap->getBiqiLayer()->setVisible(true);
+    }
+	//backItem ->setPosition(ccp(36-this->getPositionX(),size.height-36));
 	//≤˙…˙µºµØ
 	
     /*

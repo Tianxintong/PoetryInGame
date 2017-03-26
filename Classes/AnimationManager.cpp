@@ -36,14 +36,20 @@ bool AnimationManager::initAnimationMap()
 	sprintf(temp, "%d", biqiSmile);
 
 	CCAnimationCache::sharedAnimationCache()->addAnimation(createBiqiSmile(), temp);
+	/*
 	CCSpriteFrame *heronormal, *heroleftJump, *herorightJump;
 
 	//µ⁄∂˛∏ˆ≤Œ ˝±Ì æœ‘ æ«¯”Úµƒx, y, width, height£¨∏˘æ›direction¿¥»∑∂®œ‘ æµƒy◊¯±Í
 
-	CCTexture2D *heroTexture = CCTextureCache::sharedTextureCache()->addImage("Hero_image.png");
-	heronormal = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*0, eSize*1, eSize, eSize));
-	heroleftJump = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*0, eSize*2, eSize, eSize));
-	herorightJump = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*1, eSize*2, eSize, eSize));
+	CCTexture2D *heroTexture = CCTextureCache::sharedTextureCache()->addImage("hero.png");
+	heronormal = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*1, eSize*0, eSize, eSize));
+	heroleftJump = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*2, eSize*0, eSize, eSize));
+	herorightJump = CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(eSize*3, eSize*0, eSize, eSize));
+*/
+	CCSpriteFrame* heronormal=CCSpriteFrame::create("panda10-3.png",CCRectMake(0,0,50,50));
+	CCSpriteFrame* heroleftJump=CCSpriteFrame::create("panda3-4.png",CCRectMake(0,0,50,50));
+	CCSpriteFrame* herorightJump=CCSpriteFrame::create("panda3-3.png",CCRectMake(0,0,50,50));
+
 	CCSpriteFrame *controlLeft=CCSpriteFrame::create("Thumb_dpad_left.png",CCRectMake(0,0,90,90));
 	CCSpriteFrame *controlLeftPressed=CCSpriteFrame::create("Thumb_dpad_left_pressed.png",CCRectMake(0,0,90,90));
 	CCSpriteFrame *controlRight=CCSpriteFrame::create("Thumb_dpad_right.png",CCRectMake(0,0,90,90));
@@ -96,6 +102,36 @@ bool AnimationManager::initAnimationMap()
 	CCSpriteFrame *offFrame=CCSpriteFrame::create("Switch_off.png",CCRectMake(0,0,130,58));
 	sprintf(temp, "%d", offkey);
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(offFrame,temp);
+
+CCSpriteFrame* boss=CCSpriteFrame::create("monster1.png",CCRectMake(0,0,200,170));
+sprintf(temp,"%d",bosskey);
+CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(boss,temp);
+
+//PK animation
+
+
+
+	CCSpriteFrame* right1=CCSpriteFrame::create("panda1-1.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* right2=CCSpriteFrame::create("panda2-2.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* right3=CCSpriteFrame::create("panda3-3.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* left1=CCSpriteFrame::create("panda1-2.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* left2=CCSpriteFrame::create("panda2-3.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* left3=CCSpriteFrame::create("panda3-4.png",CCRectMake(0,0,49,49));
+	/*
+	sprintf(temp,"%d",Right1);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(right1,temp);
+	sprintf(temp,"%d",Right2);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(right2,temp);
+	sprintf(temp,"%d",Right3);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(right3,temp);
+	
+	sprintf(temp,"%d",Left1);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(left1,temp);
+	sprintf(temp,"%d",Left2);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(left2,temp);
+	sprintf(temp,"%d",Left3);
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFrame(left3,temp);
+	*/
 	return true;
 }
 
@@ -110,6 +146,33 @@ CCSpriteFrame * AnimationManager::getSpritFrame(int key)
 //根据不同的方向创建不同方向的图片
 CCAnimation* AnimationManager::createHeroMovingAnimationByDirection(HeroDirection direction)
 {
+	CCSpriteFrame* right1=CCSpriteFrame::create("panda4-4.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* right2=CCSpriteFrame::create("panda5-5.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* right3=CCSpriteFrame::create("panda6-6.png",CCRectMake(0,0,49,49));
+	
+	CCSpriteFrame* left1=CCSpriteFrame::create("panda4-5.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* left2=CCSpriteFrame::create("panda5-6.png",CCRectMake(0,0,49,49));
+	CCSpriteFrame* left3=CCSpriteFrame::create("panda6-7.png",CCRectMake(0,0,49,49));
+	CCArray* animFrames=new CCArray(3);
+	if(direction==hleft)
+	{
+		animFrames->addObject(left1);
+		animFrames->addObject(left2);
+		animFrames->addObject(left3);
+	}
+	else
+	{
+		animFrames->addObject(right1);
+		animFrames->addObject(right2);
+		animFrames->addObject(right3);
+	}
+	CCAnimation* animation=CCAnimation::createWithSpriteFrames(animFrames,0.09f);
+	animFrames->release();
+	return animation;
+
+
+
+/*
 	CCTexture2D *heroTexture = CCTextureCache::sharedTextureCache()->addImage("Hero_image.png");
 	CCSpriteFrame *frame0, *frame1, *frame2;
 	CCArray* animFrames ;
@@ -124,13 +187,56 @@ CCAnimation* AnimationManager::createHeroMovingAnimationByDirection(HeroDirectio
 	animFrames->addObject(frame0);
 	animFrames->addObject(frame1);
 	
-	
 
 	CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.09f);
 
 	animFrames->release();
 	
 	return animation;
+
+*/	
+/*
+	if(direction==4)
+	{
+		CCArray *animFrames;
+//	CCSpriteFrame* frame1 = CCSpriteFrame::create("panda1-1.png",CCRectMake(0,0,49,49));
+//	CCSpriteFrame* frame2 = CCSpriteFrame::create("panda2-2.png",CCRectMake(0,0,49,49));
+//	CCSpriteFrame* frame3 = CCSpriteFrame::create("panda3-3.png",CCRectMake(0,0,49,49));
+		CCSpriteFrame* frame4 = CCSpriteFrame::create("panda4-4.png",CCRectMake(0,0,49,49));
+		CCSpriteFrame* frame5 = CCSpriteFrame::create("panda5-5.png",CCRectMake(0,0,49,49));
+		CCSpriteFrame* frame6 = CCSpriteFrame::create("panda6-6.png",CCRectMake(0,0,49,49));
+		animFrames=new CCArray(3);
+		animFrames->addObject(frame4);
+		animFrames->addObject(frame5);
+		animFrames->addObject(frame6);
+//	animFrames->addObject(frame4);
+//	animFrames->addObject(frame5);
+//	animFrames->addObject(frame6);
+		CCAnimation* animation= CCAnimation::createWithSpriteFrames(animFrames,0.9f);
+		animFrames->release();
+		return animation;
+	}
+//
+	else if(direction==hleft)
+	{
+		CCArray* animFrames;
+		CCSpriteFrame* frame1=CCSpriteFrame::create("panda3-4.png",CCRectMake(0,0,49,49));
+		CCSpriteFrame* frame2 = CCSpriteFrame::create("panda4-5.png",CCRectMake(0,0,49,49));
+		CCSpriteFrame* frame3 = CCSpriteFrame::create("panda5-6.png",CCRectMake(0,0,49,49));
+		animFrames = new CCArray(3);
+		animFrames->addObject(frame1);
+		animFrames->addObject(frame2);
+		animFrames->addObject(frame3);
+		CCAnimation* animation=CCAnimation::createWithSpriteFrames(animFrames,0.9f);
+		animFrames->release();
+		return animation;
+	
+	}
+	else 
+	{
+		//return NULL;
+	}
+	*/
 }
 //ªÒ»°øﬁ∆¸∂Øª≠
 //创建动画

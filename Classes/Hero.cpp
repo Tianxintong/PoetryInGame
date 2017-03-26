@@ -11,15 +11,15 @@ Hero::~Hero(void)
 {
 }
 
-//��̬��������������Heroʵ��
+//æ≤Ã¨∑Ω∑®£¨”√”⁄…˙≥…Hero µ¿˝
 Hero* Hero::heroWithinLayer()
 {
-	//newһ������
+	//new“ª∏ˆ∂‘œÛ
 	Hero *pRet = new Hero();
-	//����init����
+	//µ˜”√init∑Ω∑®
 	if (pRet && pRet->heroInit())
 	{
-		//��ʵ������autorelease�أ�ͳһ��������ƶ������������
+		//Ω´ µ¿˝∑≈»Îautorelease≥ÿ£¨Õ≥“ª”…“˝«Êøÿ÷∆∂‘œÛµƒ…˙√¸÷‹∆⁄
 		pRet->autorelease();
 		return pRet;
 	}
@@ -35,13 +35,13 @@ bool Hero::heroInit()
 	hspeed=0;
 	isDead=false;
 	heroSprite = CCSprite::createWithSpriteFrame(sAnimationMgr->getSpritFrame(heronormalkey));
-	//����ê��
+	//…Ë÷√√™µ„
 	heroSprite->setAnchorPoint(ccp(0,0));
 	//heroSprite->setAnchorPoint(ccp(46*3,46*2+2));
-	//��������ʾ��heroSprite�ӵ��Լ��Ľڵ���
+	//Ω´”√”⁄œ‘ æµƒheroSpriteº”µΩ◊‘º∫µƒΩ⁄µ„œ¬
 	this->addChild(heroSprite);
 	this->setAnchorPoint(ccp(0,0));
-	//һ��ʼ������move״̬��
+	//“ªø™ º≤ª¥¶”⁄move◊¥Ã¨°£
 	isHeroMoving = false;
 	isJumpDone=false;
 	vspeed=0;
@@ -185,7 +185,7 @@ void Hero::jump()
 }
 CollisionType Hero::checkCollisionOnly(CCPoint heroPosition)
 {
-	//cocos2d-x����ת��ΪTilemap����
+	//cocos2d-x◊¯±Í◊™ªªŒ™Tilemap◊¯±Í
 	if (heroPosition.y<=4)
 	{
 		this->isDead=true;
@@ -194,10 +194,10 @@ CollisionType Hero::checkCollisionOnly(CCPoint heroPosition)
 	}
 	CCPoint targetTileCoord = sGlobal->gameMap->tileCoordForPosition(heroPosition);
 
-	//�����ʿ���곬����ͼ�߽磬����kWall���ͣ���ֹ���ƶ�
+	//»Áπ˚”¬ ø◊¯±Í≥¨π˝µÿÕº±ﬂΩÁ£¨∑µªÿkWall¿‡–Õ£¨◊Ë÷π∆‰“∆∂Ø
 	if (heroPosition.x < 0 || targetTileCoord.x > sGlobal->gameMap->getMapSize().width - 1 ||  targetTileCoord.y > sGlobal->gameMap->getMapSize().height - 1)
 		return kWall;
-	//��ȡ����ǽ�ڲ��Ӧ�����ͼ��ID
+	//ªÒ»°À˙œ›«Ω±⁄≤„∂‘”¶◊¯±ÍµƒÕºøÈID
 		
 
 	int tagetid=sGlobal->gameMap->getCollidableLayer()->tileGIDAt(targetTileCoord);
@@ -216,7 +216,11 @@ CollisionType Hero::checkCollisionOnly(CCPoint heroPosition)
     int wordid=sGlobal->gameMap->getWordLayer()->tileGIDAt(targetTileCoord);
     if (wordid)
     {
+        printf("%d\n", wordid);
+        sGlobal->globalData->setWordId(wordid-81);
         sGlobal->gameMap->getWordLayer()->removeTileAt(targetTileCoord);
+        sGlobal->globalData->setOwnWord(sGlobal->globalData->getOwnWord()+1);
+        printf("得到一个字，一共得到%d个字，还有%d个字等你发现\n", sGlobal->globalData->getOwnWord(), sGlobal->globalData->getLeaveWord());
         return kNone;
     }
 	/*
@@ -244,7 +248,7 @@ CollisionType Hero::checkCollisionOnly(CCPoint heroPosition)
 	}*/
     /*
 	int targetTileGID = sGlobal->gameMap->getPlatformLayer()->tileGIDAt(targetTileCoord);
-	//���ͼ��ID��Ϊ0����ʾ��ǽ
+	//»Áπ˚ÕºøÈID≤ªŒ™0£¨±Ì æ”–«Ω
 	if (targetTileGID) 
 	{
 		return kWall;
@@ -258,8 +262,21 @@ CollisionType Hero::checkCollisionOnly(CCPoint heroPosition)
 	int winID=sGlobal->gameMap->getBiqiLayer()->tileGIDAt(targetTileCoord);
 	if (winID) 
 	{
-		this->isWin=true;
-		return kbiqi;
+        if (sGlobal->globalData->getLeaveWord()==0)
+        {
+            if (!this->isWin)
+            {
+        		this->isWin=true;
+                sGlobal->globalData->setHeroStrength(sGlobal->globalData->getHeroStrength()+20);
+                printf("英雄战力提升20，现在的战力是%d\n", sGlobal->globalData->getHeroStrength());
+        		return kbiqi;
+            }
+        }
+        else
+        {
+            printf("你只有收集完所有的字才能通过，继续努力吧!\n");
+            return kWall;
+        }
 	}
 	}
 	return kNone;
@@ -322,7 +339,7 @@ void Hero::setViewpointCenter(CCPoint p)
 void Hero::animateDone(CCNode *sender)
 {
 	isanimate=false;
-	heroSprite->setDisplayFrame(sAnimationMgr->getSpritFrame(heronormalkey));
+	//heroSprite->setDisplayFrame(sAnimationMgr->getSpritFrame(heronormalkey));
 }
 /*
 void Hero::setLayerEmpty(CCPoint start,int width,int height)

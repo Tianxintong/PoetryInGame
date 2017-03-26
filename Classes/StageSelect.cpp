@@ -37,14 +37,16 @@ bool StageSelect::init()
 	do 
 	{
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		CCSprite* bgSprite=CCSprite::create("StageSelector_bkg_gray.jpg");
+		CCSprite* bgSprite=CCSprite::create("background-3.png");
 		bgSprite->setPosition(ccp(size.width / 2, size.height/2));
+		bgSprite->setScaleX(0.8);
+		bgSprite->setScaleY(0.8);
 		this->addChild(bgSprite);
-		CCSprite* StageSelect_frame=CCSprite::create("StageSelect_frame.png");
+//		CCSprite* StageSelect_frame=CCSprite::create("StageSelect_frame.png");
 		//bgSprite->setAnchorPoint(ccp(0,0));
 		
-		StageSelect_frame->setPosition(ccp(size.width / 2, size.height/2));
-		this->addChild(StageSelect_frame);
+//		StageSelect_frame->setPosition(ccp(size.width / 2, size.height/2));
+//		this->addChild(StageSelect_frame);
 		//........................
 		CCMenuItemImage *backItem = CCMenuItemImage::create(
 			"Thumb_back.png",
